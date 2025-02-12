@@ -1,0 +1,13 @@
+
+# Node modules
+node_modules/
+
+# Course project files you don't want to include
+queries.sql
+solution.js
+
+# System files
+.DS_Store
+
+# Log files
+*.log
