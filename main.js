@@ -1,22 +1,24 @@
 import express from "express";
 import pg from "pg";
+import env from "dotenv";
 
 const app = express();
 const port = 3000;
+env.config();
 
 const db = new pg.Client({
-  user: "*******",
-  host: "localhost",
-  database: "********",
-  password: "********",
-  port: 5432,
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
 });
 
 db.connect((err) => {
   if (err) {
-    throw new Error("⚠️ Error! can't connect to PostgreSql db.");
+    console.error(`⚠️ Error! can't connect to PostgreSql db ${err.message}`);
   } else {
-    console.log("✅ Successfully connected to PostgreSql db.");
+    console.debug("✅ Successfully connected to PostgreSql db.");
   }
 });
 
