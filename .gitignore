@@ -11,3 +11,5 @@ solution.js
 
 # Log files
 *.log
+
+.env
